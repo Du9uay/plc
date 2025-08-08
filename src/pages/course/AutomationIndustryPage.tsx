@@ -129,8 +129,8 @@ const AutomationIndustryPage: React.FC = () => {
     if (!isTutorExpanded) {
       // 第一次点击：展开视频播放器
       setIsTutorExpanded(true);
-      // 等待下一个渲染周期再播放视频
-      setTimeout(async () => {
+      // 使用 rAF 在同一手势上下文尽快尝试播放，避免超时导致的自动播放限制
+      const tryPlay = async () => {
         if (tutorVideoRef.current) {
           try {
             console.log('尝试播放视频...');
@@ -142,9 +142,11 @@ const AutomationIndustryPage: React.FC = () => {
             setIsTutorPlaying(false);
           }
         } else {
-          console.error('视频元素不存在');
+          // 元素尚未挂载，下一帧重试
+          requestAnimationFrame(tryPlay);
         }
-      }, 200);
+      };
+      requestAnimationFrame(tryPlay);
     } else {
       // 已展开状态：切换播放/暂停
       if (tutorVideoRef.current) {
@@ -188,8 +190,8 @@ const AutomationIndustryPage: React.FC = () => {
     if (!isTransparentVideoExpanded) {
       // 第一次点击：展开视频播放器
       setIsTransparentVideoExpanded(true);
-      // 等待下一个渲染周期再播放视频
-      setTimeout(async () => {
+      // 使用 rAF 在同一手势上下文尽快尝试播放
+      const tryPlay = async () => {
         if (transparentVideoRef.current) {
           try {
             console.log('尝试播放透明视频...');
@@ -201,9 +203,10 @@ const AutomationIndustryPage: React.FC = () => {
             setIsTransparentVideoPlaying(false);
           }
         } else {
-          console.error('透明视频元素不存在');
+          requestAnimationFrame(tryPlay);
         }
-      }, 200);
+      };
+      requestAnimationFrame(tryPlay);
     } else {
       // 已展开状态：切换播放/暂停
       if (transparentVideoRef.current) {
@@ -836,7 +839,7 @@ const AutomationIndustryPage: React.FC = () => {
                   {/* 案例图片 */}
                   <div className="flex justify-center">
                     <img 
-                      src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                      src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('2.工业控制器定义与核心作用3（案例）.png')}`)}
                       alt="工业控制器应用案例"
                       className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                       style={{ maxHeight: '200px' }}
@@ -866,7 +869,7 @@ const AutomationIndustryPage: React.FC = () => {
                   {/* 右侧案例图片 */}
                   <div className="flex justify-center">
                     <img 
-                      src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                      src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('2.工业控制器定义与核心作用3（案例）.png')}`)}
                       alt="工业控制器应用案例"
                       className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                       style={{ maxHeight: '200px' }}
@@ -938,7 +941,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('3.工业控制器的分类与对比1（PLC）.png')}`)}
                             alt="PLC控制器系列"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '250px' }}
@@ -990,7 +993,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('4.DCS系统.jpeg')}`)}
                             alt="DCS分布式控制系统"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '350px' }}
@@ -1093,7 +1096,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('5.工业控制器的分类与对比3（工控机）.png')}`)}
                             alt="工业控制计算机"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '350px' }}
@@ -1145,7 +1148,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('6.工业控制器的分类与对比4（单片机）.jpg')}`)}
                             alt="单片机微控制器"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '350px' }}
@@ -1246,7 +1249,7 @@ const AutomationIndustryPage: React.FC = () => {
                       {/* 右侧图片 */}
                       <div className="flex justify-center">
                         <img 
-                          src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
+                          src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('7.工业控制器的分类与对比5（运动控制器）.png')}`)}
                           alt="运动控制器"
                           className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                           style={{ maxHeight: '350px' }}
@@ -1612,7 +1615,7 @@ const AutomationIndustryPage: React.FC = () => {
                                     }
                                   }}
                                   style={{
-                                    backgroundImage: `url("${getImagePath('/tutor-avatar.jpg')}")`,
+                                    backgroundImage: `url("${getImagePath('/test-image.jpg')}")`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
                                     backgroundColor: '#1a1a2e',
@@ -1675,17 +1678,28 @@ const AutomationIndustryPage: React.FC = () => {
                                     onEnded={handleTutorVideoEnd}
                                     onPause={() => setIsTutorPlaying(false)}
                                     onPlay={() => setIsTutorPlaying(true)}
-                                    muted={false}
-                                    controls={false}
+                                    muted
+                                    controls
+                                    controlsList="nodownload noplaybackrate"
                                     playsInline
-                                    preload="metadata"
-                                    style={{ 
-                                      background: 'transparent',
-                                      transform: 'scale(0.9)',
-                                      transformOrigin: 'center center'
+                                    preload="auto"
+                                    onError={(e) => {
+                                      console.error('导师视频加载失败:', (e.target as HTMLVideoElement).currentSrc);
                                     }}
+                                    onLoadedMetadata={(e) => {
+                                      const v = e.currentTarget;
+                                      console.log('导师视频元数据已加载, 时长:', v.duration);
+                                    }}
+                                    onCanPlay={() => {
+                                      console.log('导师视频可播放');
+                                    }}
+                                  style={{ 
+                                    background: 'transparent',
+                                    transform: 'scale(0.9)',
+                                    transformOrigin: 'center center'
+                                  }}
                                   >
-                                    <source src={getVideoPath("/images/videos/$1")} type="video/mp4" />
+                                    <source src={getVideoPath(`videos/vid1.mp4`)} type="video/mp4" />
                                     您的浏览器不支持视频播放。
                                   </video>
 
@@ -1792,7 +1806,7 @@ const AutomationIndustryPage: React.FC = () => {
                                       }
                                     }}
                                     style={{
-                                      backgroundImage: `url("${getImagePath('/tutor-avatar.jpg')}")`,
+                                      backgroundImage: `url("${getImagePath('/test-image.jpg')}")`,
                                       backgroundSize: 'cover',
                                       backgroundPosition: 'center',
                                       backgroundColor: '#1a1a2e',
@@ -1855,17 +1869,28 @@ const AutomationIndustryPage: React.FC = () => {
                                       onEnded={handleTransparentVideoEnd}
                                       onPause={() => setIsTransparentVideoPlaying(false)}
                                       onPlay={() => setIsTransparentVideoPlaying(true)}
-                                      muted={false}
-                                      controls={false}
+                                      muted
+                                      controls
+                                      controlsList="nodownload noplaybackrate"
                                       playsInline
-                                      preload="metadata"
-                                      style={{ 
-                                        background: 'transparent',
-                                        transform: 'scale(0.9)',
-                                        transformOrigin: 'center center'
+                                      preload="auto"
+                                      onError={(e) => {
+                                        console.error('透明视频加载失败:', (e.target as HTMLVideoElement).currentSrc);
                                       }}
+                                      onLoadedMetadata={(e) => {
+                                        const v = e.currentTarget;
+                                        console.log('透明视频元数据已加载, 时长:', v.duration);
+                                      }}
+                                      onCanPlay={() => {
+                                        console.log('透明视频可播放');
+                                      }}
+                                  style={{ 
+                                    background: 'transparent',
+                                    transform: 'scale(0.9)',
+                                    transformOrigin: 'center center'
+                                  }}
                                     >
-                                      <source src={getVideoPath("/images/videos/$1")} type="video/mp4" />
+                                      <source src={getVideoPath(`videos/vid2.mp4`)} type="video/mp4" />
                                       您的浏览器不支持视频播放。
                                     </video>
                                   </div>
