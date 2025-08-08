@@ -1685,7 +1685,7 @@ const AutomationIndustryPage: React.FC = () => {
                                       transformOrigin: 'center center'
                                     }}
                                   >
-                                    <source src={getVideoPath("/videos/1. 工业控制器定义与核心作用.mp4")} type="video/mp4" />
+                                    <source src={getVideoPath("/images/videos/$1")} type="video/mp4" />
                                     您的浏览器不支持视频播放。
                                   </video>
 
@@ -1865,7 +1865,7 @@ const AutomationIndustryPage: React.FC = () => {
                                         transformOrigin: 'center center'
                                       }}
                                     >
-                                      <source src={getVideoPath("/videos/工业控制器的分类与对比新.mp4")} type="video/mp4" />
+                                      <source src={getVideoPath("/images/videos/$1")} type="video/mp4" />
                                       您的浏览器不支持视频播放。
                                     </video>
                                   </div>
