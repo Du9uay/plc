@@ -34,7 +34,6 @@ Thumbs.db
 node_modules/.cache/
 
 # Large media files
-*.mp4
 *.mov
 *.zip
 *.tar.gz
@@ -52,4 +51,4 @@ node_modules/.cache/
 匹配题连线功能实现文档.md
 课程讲义.md
 3D模型转换指南.md
-PLC控制器基础_讲义_20250627.md 
+PLC控制器基础_讲义_20250627.md
