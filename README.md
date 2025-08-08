@@ -1,114 +1,107 @@
-# Liquid Glass React
+# PLC控制器基础教学网站
 
-Apple's Liquid Glass effect for React.
+现代化的PLC（可编程逻辑控制器）在线教学平台，提供系统化的工业自动化控制知识学习体验。
 
-Card Example              |  Button Example
-:-------------------------:|:-------------------------:
-![](https://github.com/rdev/liquid-glass-react/raw/master/assets/card.png)  |  ![](https://github.com/rdev/liquid-glass-react/raw/master/assets/button.png)
+## 🌐 在线访问
 
-## 🎬  Demo
+**访问地址**: [https://du9uay.github.io/plc](https://du9uay.github.io/plc)
 
-[Click here](https://liquid-glass.maxrovensky.com) to see it in action!
+## 📚 课程内容
 
-![project liquid gif](./assets/project-liquid.gif)
+### 五大核心章节
 
-## ✨ Features
+1. **PLC行业认知与基础框架**
+   - 工业控制器定义与核心作用
+   - 工业控制器的分类与对比
+   - PLC在不同行业的应用场景
 
-- Proper edgy bending and refraction
-- Multiple refraction modes
-- Configurable frosty level
-- Supports arbitrary child elements
-- Configurable paddings
-- Correct hover and click effects
-- Edges and highlights take on the underlying light like Apple's does
-- Configurable chromatic aberration
-- Configurable elasticity, to mimic Apple's "liquid" feel
+2. **PLC核心定位与硬件基础**
+   - PLC特性与工作原理概述
+   - PLC的基本结构
+   - 西门子S7-1200 PLC硬件配置案例
 
-> **⚠️ NOTE:** Safari and Firefox only partially support the effect (displacement will not be visible)
+3. **电气接线与信号认知**
+   - 理论基础与概念解析
+   - 技术要点与操作方法
+   - 实践应用案例
 
-## 🚀 Usage
+4. **PLC程序开发与调试**
+   - PLC编程语言分类
+   - 梯形图编程软件介绍
+   - TIA Portal基础操作流程
 
-### Installation
+5. **PLC安全强化**
+   - 电气安全措施
+   - 功能安全设计原则
+   - 数据安全保护方法
 
+## ✨ 功能特点
+
+- 📱 **响应式设计** - 完美适配桌面端、平板和移动设备
+- 🎨 **现代化UI** - 采用玻璃态设计风格，视觉效果优雅
+- 📊 **丰富的教学资源** - 高质量图片、详细案例分析
+- 🎯 **互动式学习** - 课堂测试、作业提交系统
+- 📖 **系统化课程** - 从基础到进阶的完整学习路径
+
+## 🛠 技术栈
+
+- **前端框架**: React 18 + TypeScript
+- **样式方案**: TailwindCSS + Framer Motion
+- **路由管理**: React Router v6
+- **构建工具**: Create React App
+- **部署方式**: GitHub Pages
+
+## 💻 本地开发
+
+### 安装依赖
 ```bash
-npm install liquid-glass-react
+npm install
 ```
 
-### Basic Usage
+### 启动开发服务器
+```bash
+npm start
+```
+访问 http://localhost:3000
 
-```tsx
-import LiquidGlass from 'liquid-glass-react'
-
-function App() {
-  return (
-    <LiquidGlass>
-      <div className="p-6">
-        <h2>Your content here</h2>
-        <p>This will have the liquid glass effect</p>
-      </div>
-    </LiquidGlass>
-  )
-}
+### 构建生产版本
+```bash
+npm run build
 ```
 
-### Button Example
-
-```tsx
-<LiquidGlass
-  displacementScale={64}
-  blurAmount={0.1}
-  saturation={130}
-  aberrationIntensity={2}
-  elasticity={0.35}
-  cornerRadius={100}
-  padding="8px 16px"
-  onClick={() => console.log('Button clicked!')}
->
-  <span className="text-white font-medium">Click Me</span>
-</LiquidGlass>
+### 部署到GitHub Pages
+```bash
+npm run deploy
 ```
 
-### Mouse Container Example
+## 📁 项目结构
 
-When you want the glass effect to respond to mouse movement over a larger area (like a parent container), use the `mouseContainer` prop:
-
-```tsx
-function App() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  return (
-    <div ref={containerRef} className="w-full h-screen bg-image">
-      <LiquidGlass
-        mouseContainer={containerRef}
-        elasticity={0.3}
-        style={{ position: 'fixed', top: '50%', left: '50%' }}
-      >
-        <div className="p-6">
-          <h2>Glass responds to mouse anywhere in the container</h2>
-        </div>
-      </LiquidGlass>
-    </div>
-  )
-}
+```
+src/
+├── components/      # 通用组件
+├── pages/          # 页面组件
+│   ├── course/     # 课程章节页面
+│   └── ...         # 其他页面
+├── assets/         # 静态资源
+└── App.tsx         # 应用入口
 ```
 
-## Props
+## 🎯 教学目标
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `React.ReactNode` | - | The content to render inside the glass container |
-| `displacementScale` | `number` | `70` | Controls the intensity of the displacement effect |
-| `blurAmount` | `number` | `0.0625` | Controls the blur/frosting level |
-| `saturation` | `number` | `140` | Controls color saturation of the glass effect |
-| `aberrationIntensity` | `number` | `2` | Controls chromatic aberration intensity |
-| `elasticity` | `number` | `0.15` | Controls the "liquid" elastic feel (0 = rigid, higher = more elastic) |
-| `cornerRadius` | `number` | `999` | Border radius in pixels |
-| `className` | `string` | `""` | Additional CSS classes |
-| `padding` | `string` | - | CSS padding value |
-| `style` | `React.CSSProperties` | - | Additional inline styles |
-| `overLight` | `boolean` | `false` | Whether the glass is over a light background |
-| `onClick` | `() => void` | - | Click handler |
-| `mouseContainer` | `React.RefObject<HTMLElement \| null> \| null` | `null` | Container element to track mouse movement on (defaults to the glass component itself) |
-| `mode` | `"standard" \| "polar" \| "prominent" \| "shader"` | `"standard"` | Refraction mode for different visual effects. `shader` is the most accurate but not the most stable. |
-| `globalMousePos` | `{ x: number; y: number }` | - | Global mouse position coordinates for manual control |
-| `mouseOffset` | `{ x: number; y: number }` | - | Mouse position offset for fine-tuning positioning |
+- 掌握PLC的基本原理和应用
+- 理解工业自动化控制系统
+- 学会使用西门子TIA Portal软件
+- 具备PLC编程和调试能力
+- 了解工业安全规范
+
+## 📝 License
+
+MIT License
+
+## 👥 贡献
+
+欢迎提交Issue和Pull Request来改进这个项目。
+
+---
+
+© 2025 PLC教学网站 - 专注工业自动化教育
