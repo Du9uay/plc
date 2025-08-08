@@ -1,0 +1,8 @@
+Version: 2025-08-08 14:20
+Content: PLC Education Website - Clean Version
+Status: Updated with local project
+Features:
+- 5 course chapters
+- No 3D models
+- High-quality images
+- Responsive design
