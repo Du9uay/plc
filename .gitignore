@@ -33,12 +33,14 @@ Thumbs.db
 # Cache
 node_modules/.cache/
 
-# Large media files
-*.mp4
+# Large media files (except needed videos)
 *.mov
 *.zip
 *.tar.gz
 *.obj
+
+# Allow specific video files needed for the course
+!public/videos/*.mp4
 
 # Local project folders
 工业计算机S实训台7-1200 西门子.(Training _爱给网_aigei_com/
