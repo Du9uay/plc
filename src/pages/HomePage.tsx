@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, BookOpen, Users, Award, Target, Settings, Network, Cpu, Zap } from '../components/Icons';
+import PathDebugger from '../components/PathDebugger';
 
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
@@ -456,9 +457,12 @@ const HomePage: React.FC = () => {
 
           </motion.div>
         </motion.div>
-              </div>
-            </div>
+      </div>
+      
+      {/* 调试器 - 仅在开发和测试时显示 */}
+      <PathDebugger />
+    </div>
   );
-  };
+};
   
 export default HomePage; 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, BookOpen, Settings, Target, CheckCircle, Network, Monitor, Cpu, Zap, Clock, Hash, Calculator, Power, Code, ArrowDown, RefreshCw, Shield, Menu } from '../../components/Icons';
+import { getImagePath } from '../../utils/pathUtils';
 
 const ProgramDevelopmentPage: React.FC = () => {
   const [currentSection, setCurrentSection] = useState('');
@@ -189,7 +190,7 @@ const ProgramDevelopmentPage: React.FC = () => {
           <div 
             className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl text-center p-8 relative overflow-hidden"
             style={{
-              backgroundImage: `url("/images/${encodeURIComponent('4.PLC程序开发与调试.jpg')}")`,
+              backgroundImage: `url("${getImagePath(`/images/${encodeURIComponent('4.PLC程序开发与调试.jpg')}`)}")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center top 35%',
               backgroundRepeat: 'no-repeat'
@@ -510,7 +511,7 @@ const ProgramDevelopmentPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             style={{
-              backgroundImage: `url("/images/backgrounds/4.PLC程序开发与调试/${encodeURIComponent('2.PLC梯形图编程常见软件介绍1.jpg')}")`,
+              backgroundImage: `url("${getImagePath(`/images/backgrounds/4.PLC程序开发与调试/${encodeURIComponent('2.PLC梯形图编程常见软件介绍1.jpg')}`)}")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'

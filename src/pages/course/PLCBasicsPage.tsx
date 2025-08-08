@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Cpu, Settings, Target, CheckCircle, Network, Monitor, Zap, Menu } from '../../components/Icons';
+import { getImagePath } from '../../utils/pathUtils';
 
 const PLCBasicsPage: React.FC = () => {
   const [currentSection, setCurrentSection] = useState('');
@@ -465,7 +466,7 @@ const PLCBasicsPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl text-center p-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/${encodeURIComponent('2.PLC核心定位与硬件基础.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/${encodeURIComponent('2.PLC核心定位与硬件基础.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center top 35%',
             backgroundRepeat: 'no-repeat'
@@ -705,7 +706,7 @@ const PLCBasicsPage: React.FC = () => {
                 <div 
                   className="w-full aspect-video rounded-lg shadow-lg border border-white/20 overflow-hidden bg-gray-800"
                   style={{
-                    backgroundImage: 'url("/images/backgrounds/2.PLC核心定位与硬件基础/3.西门子S7 - 1200 PLC硬件配置案例.jpg")',
+                    backgroundImage: `url("${getImagePath('/images/backgrounds/2.PLC核心定位与硬件基础/3.西门子S7 - 1200 PLC硬件配置案例.jpg')}")`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'

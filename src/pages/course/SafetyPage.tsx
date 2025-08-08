@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { getImagePath } from '../../utils/pathUtils';
 import { 
   Target, 
   Zap, 
@@ -215,7 +216,7 @@ const SafetyPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl text-center p-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/${encodeURIComponent('5.PLC安全强化.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/${encodeURIComponent('5.PLC安全强化.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center top 35%',
             backgroundRepeat: 'no-repeat'
@@ -342,7 +343,7 @@ const SafetyPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 mb-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/backgrounds/5.PLC安全强化/${encodeURIComponent('1.PLC电气安全措施的具体实施.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/backgrounds/5.PLC安全强化/${encodeURIComponent('1.PLC电气安全措施的具体实施.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center top',
             backgroundRepeat: 'no-repeat',
@@ -395,7 +396,7 @@ const SafetyPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 mb-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/backgrounds/5.PLC安全强化/${encodeURIComponent('2.PLC功能安全措施的设计原则.png')}")`,
+            backgroundImage: `url("${getImagePath(`/images/backgrounds/5.PLC安全强化/${encodeURIComponent('2.PLC功能安全措施的设计原则.png')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center top',
             backgroundRepeat: 'no-repeat',
@@ -449,7 +450,7 @@ const SafetyPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/backgrounds/5.PLC安全强化/${encodeURIComponent('3.PLC数据安全措施的保护方法1.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/backgrounds/5.PLC安全强化/${encodeURIComponent('3.PLC数据安全措施的保护方法1.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',

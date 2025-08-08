@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Zap, Settings, Target, Network, Monitor, Cpu, Menu } from '../../components/Icons';
+import { getImagePath } from '../../utils/pathUtils';
 
 const IOWiringPage: React.FC = () => {
   const [currentSection, setCurrentSection] = useState('');
@@ -536,7 +537,7 @@ const IOWiringPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl text-center p-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/${encodeURIComponent('3.号认知.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/${encodeURIComponent('3.号认知.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center top 15%',
             backgroundRepeat: 'no-repeat'
@@ -805,7 +806,7 @@ const IOWiringPage: React.FC = () => {
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 mb-8 relative overflow-hidden" 
           variants={itemVariants}
           style={{
-            backgroundImage: `url("/images/backgrounds/3.电气接线与信号认知/${encodeURIComponent('5.PLC接线的IO接线规范.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/backgrounds/3.电气接线与信号认知/${encodeURIComponent('5.PLC接线的IO接线规范.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'

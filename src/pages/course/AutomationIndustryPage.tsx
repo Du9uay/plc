@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getImagePath, getVideoPath } from '../../utils/pathUtils';
 import { 
   Target, 
   Zap, 
@@ -763,7 +764,7 @@ const AutomationIndustryPage: React.FC = () => {
         <div 
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl text-center p-8 relative overflow-hidden"
           style={{
-            backgroundImage: `url("/images/${encodeURIComponent('1.1PLC行业认知与基础框架1(分辨率不够).jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/${encodeURIComponent('1.1PLC行业认知与基础框架1(分辨率不够).jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
@@ -805,7 +806,7 @@ const AutomationIndustryPage: React.FC = () => {
           className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 mb-8 relative overflow-hidden" 
           variants={cardVariants}
           style={{
-            backgroundImage: `url("/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('1.工业控制器定义与核心作用2.jpg')}")`,
+            backgroundImage: `url("${getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('1.工业控制器定义与核心作用2.jpg')}`)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
@@ -1473,13 +1474,13 @@ const AutomationIndustryPage: React.FC = () => {
                         <div 
                           className="w-full max-w-md aspect-video rounded-lg shadow-lg border border-white/20 overflow-hidden bg-gray-800"
                           style={{
-                            backgroundImage: `url("/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent(
+                            backgroundImage: `url("${getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent(
                               application.category === '离散制造' 
                                 ? '8.离散制造（以汽车装配线为例）.png'
                                 : application.category === '过程控制'
                                 ? '9.过程控制（以化工厂反应罐为例）3.jpg'
                                 : '10.基础设施（以智能楼宇为例）.jpg'
-                            )}")`,
+                            )}`)}")`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat'
@@ -1611,7 +1612,7 @@ const AutomationIndustryPage: React.FC = () => {
                                     }
                                   }}
                                   style={{
-                                    backgroundImage: 'url("/tutor-avatar.jpg")',
+                                    backgroundImage: `url("${getImagePath('/tutor-avatar.jpg')}")`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
                                     backgroundColor: '#1a1a2e',
@@ -1684,7 +1685,7 @@ const AutomationIndustryPage: React.FC = () => {
                                       transformOrigin: 'center center'
                                     }}
                                   >
-                                    <source src="/videos/1. 工业控制器定义与核心作用.mp4" type="video/mp4" />
+                                    <source src={getVideoPath("/videos/1. 工业控制器定义与核心作用.mp4")} type="video/mp4" />
                                     您的浏览器不支持视频播放。
                                   </video>
 
@@ -1791,7 +1792,7 @@ const AutomationIndustryPage: React.FC = () => {
                                       }
                                     }}
                                     style={{
-                                      backgroundImage: 'url("/tutor-avatar.jpg")',
+                                      backgroundImage: `url("${getImagePath('/tutor-avatar.jpg')}")`,
                                       backgroundSize: 'cover',
                                       backgroundPosition: 'center',
                                       backgroundColor: '#1a1a2e',
@@ -1864,7 +1865,7 @@ const AutomationIndustryPage: React.FC = () => {
                                         transformOrigin: 'center center'
                                       }}
                                     >
-                                      <source src="/工业控制器的分类与对比新.mp4" type="video/mp4" />
+                                      <source src={getVideoPath("/工业控制器的分类与对比新.mp4")} type="video/mp4" />
                                       您的浏览器不支持视频播放。
                                     </video>
                                   </div>
