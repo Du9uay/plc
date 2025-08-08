@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/plc/static/css/main.f4f4cf36.css",
-    "main.js": "/plc/static/js/main.f3728ebd.js",
+    "main.js": "/plc/static/js/main.dda37129.js",
     "index.html": "/plc/index.html"
   },
   "entrypoints": [
     "static/css/main.f4f4cf36.css",
-    "static/js/main.f3728ebd.js"
+    "static/js/main.dda37129.js"
   ]
 }
