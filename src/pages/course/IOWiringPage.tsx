@@ -710,7 +710,7 @@ const IOWiringPage: React.FC = () => {
           {/* 电气信号类型区分图 */}
           <div className="mt-8">
             <img 
-              src={`/images/backgrounds/3.电气接线与信号认知/${encodeURIComponent('3.电气信号类型区分.jpeg')}`}
+              src={getImagePath(`/images/backgrounds/3.电气接线与信号认知/${encodeURIComponent('$1')}`)}
               alt="电气信号类型区分图"
               className="w-full h-auto rounded-lg shadow-lg"
               style={{ maxWidth: '100%', height: 'auto' }}
@@ -784,7 +784,7 @@ const IOWiringPage: React.FC = () => {
           {/* 模拟信号与数字信号转换图 */}
           <div className="mt-8">
             <img 
-              src={`/images/backgrounds/3.电气接线与信号认知/${encodeURIComponent('4.模拟信号与数字信号的转换.jpeg')}`}
+              src={getImagePath(`/images/backgrounds/3.电气接线与信号认知/${encodeURIComponent('$1')}`)}
               alt="模拟信号与数字信号的转换过程图"
               className="w-full h-auto rounded-lg shadow-lg"
               style={{ maxWidth: '100%', height: 'auto' }}

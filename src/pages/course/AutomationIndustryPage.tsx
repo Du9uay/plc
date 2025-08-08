@@ -836,7 +836,7 @@ const AutomationIndustryPage: React.FC = () => {
                   {/* 案例图片 */}
                   <div className="flex justify-center">
                     <img 
-                      src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('2.工业控制器定义与核心作用3（案例）.png')}`}
+                      src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                       alt="工业控制器应用案例"
                       className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                       style={{ maxHeight: '200px' }}
@@ -866,7 +866,7 @@ const AutomationIndustryPage: React.FC = () => {
                   {/* 右侧案例图片 */}
                   <div className="flex justify-center">
                     <img 
-                      src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('2.工业控制器定义与核心作用3（案例）.png')}`}
+                      src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                       alt="工业控制器应用案例"
                       className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                       style={{ maxHeight: '200px' }}
@@ -938,7 +938,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('3.工业控制器的分类与对比1（PLC）.png')}`}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                             alt="PLC控制器系列"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '250px' }}
@@ -990,7 +990,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('4.DCS系统.jpeg')}`}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                             alt="DCS分布式控制系统"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '350px' }}
@@ -1093,7 +1093,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('5.工业控制器的分类与对比3（工控机）.png')}`}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                             alt="工业控制计算机"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '350px' }}
@@ -1145,7 +1145,7 @@ const AutomationIndustryPage: React.FC = () => {
                         {/* 右侧图片 */}
                         <div className="flex justify-center">
                           <img 
-                            src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('6.工业控制器的分类与对比4（单片机）.jpg')}`}
+                            src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                             alt="单片机微控制器"
                             className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                             style={{ maxHeight: '350px' }}
@@ -1246,7 +1246,7 @@ const AutomationIndustryPage: React.FC = () => {
                       {/* 右侧图片 */}
                       <div className="flex justify-center">
                         <img 
-                          src={`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('7.工业控制器的分类与对比5（运动控制器）.png')}`}
+                          src={getImagePath(`/images/backgrounds/1.PLC行业认知与基础框架/${encodeURIComponent('$1')}`)}
                           alt="运动控制器"
                           className="max-w-full h-auto rounded-lg shadow-lg border border-white/20"
                           style={{ maxHeight: '350px' }}

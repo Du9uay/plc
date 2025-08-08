@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 // 懒加载3D模型组件
 const EnhancedPLCModel = lazy(() => import('./EnhancedPLCModel'));
-const DetailedPLCModel = lazy(() => import('./DetailedPLCModel'));
 
 // 加载状态组件
 const LoadingPlaceholder: React.FC<{ height?: string }> = ({ height = "500px" }) => (
@@ -120,7 +119,7 @@ const LazyLoadedPLCModel: React.FC<LazyLoadedPLCModelProps> = ({
               {type === 'enhanced' ? (
                 <EnhancedPLCModel className={className} />
               ) : (
-                <DetailedPLCModel className={className} />
+                <LoadingPlaceholder />
               )}
             </motion.div>
           </Suspense>
