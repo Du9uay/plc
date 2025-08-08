@@ -605,21 +605,6 @@ const PLCBasicsPage: React.FC = () => {
             <Target className="w-6 h-6 mr-3 text-green-400" />
             技术要点与操作方法
           </h2>
-          
-          {/* PLC基本结构图 - 优先加载图片 */}
-          <div className="mb-8">
-            <img 
-              src="/images/backgrounds/2.PLC核心定位与硬件基础/2.PLC的基本结构2.png"
-              alt="PLC的基本结构图"
-              className="w-full h-auto rounded-lg shadow-lg"
-              style={{ maxWidth: '100%', height: 'auto' }}
-              loading="eager"
-              onError={(e) => {
-                console.error('图片加载失败:', e.currentTarget.src);
-                e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"%3E%3Crect fill="%23333" width="400" height="300"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EPLC结构图加载失败%3C/text%3E%3C/svg%3E';
-              }}
-            />
-          </div>
         </div>
 
         <div className="grid gap-8">
