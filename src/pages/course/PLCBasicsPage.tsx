@@ -585,7 +585,7 @@ const PLCBasicsPage: React.FC = () => {
           {/* PLC扫描循环工作原理图 */}
           <div className="mt-8">
             <img 
-              src="/images/backgrounds/2.PLC核心定位与硬件基础/20250630-001847.png"
+              src={getImagePath('/images/backgrounds/2.PLC核心定位与硬件基础/20250630-001847.png')}
               alt="PLC扫描循环工作原理图"
               className="w-full h-auto rounded-lg shadow-lg"
               style={{ maxWidth: '100%', height: 'auto' }}
