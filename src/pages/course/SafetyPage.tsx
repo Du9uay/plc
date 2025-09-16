@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { getImagePath } from '../../utils/pathUtils';
+import { motion, AnimatePresence } from 'framer-motion';
+import { getImagePath, getVideoPath } from '../../utils/pathUtils';
 import { 
   Target, 
   Zap, 
@@ -13,11 +13,22 @@ import {
   Cpu,
   Shield,
   Layers,
-  Menu
+  Menu,
+  PlayCircle,
+  X
 } from '../../components/Icons';
 
 const SafetyPage: React.FC = () => {
   const [currentSection, setCurrentSection] = useState('');
+  const [isContent15Playing, setIsContent15Playing] = useState(false);
+  const [isContent15Expanded, setIsContent15Expanded] = useState(false);
+  const content15VideoRef = useRef<HTMLVideoElement>(null);
+  const [isContent16Playing, setIsContent16Playing] = useState(false);
+  const [isContent16Expanded, setIsContent16Expanded] = useState(false);
+  const content16VideoRef = useRef<HTMLVideoElement>(null);
+  const [isContent17Playing, setIsContent17Playing] = useState(false);
+  const [isContent17Expanded, setIsContent17Expanded] = useState(false);
+  const content17VideoRef = useRef<HTMLVideoElement>(null);
 
   // 页面目录数据
   const tableOfContents = [
@@ -77,6 +88,168 @@ const SafetyPage: React.FC = () => {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, [tableOfContents]);
+
+  // 内容15视频控制函数
+  const handleContent15TogglePlay = async () => {
+    console.log('内容15视频控制被触发', { isContent15Expanded, isContent15Playing });
+    
+    if (!isContent15Expanded) {
+      setIsContent15Expanded(true);
+      
+      // 等待动画完成后再播放
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      requestAnimationFrame(() => {
+        if (content15VideoRef.current) {
+          content15VideoRef.current.play()
+            .then(() => {
+              console.log('内容15视频开始播放');
+              setIsContent15Playing(true);
+            })
+            .catch(error => {
+              console.error('内容15视频播放失败:', error);
+              setIsContent15Playing(false);
+            });
+        }
+      });
+    } else {
+      // 已展开状态，切换播放/暂停
+      if (content15VideoRef.current) {
+        try {
+          if (isContent15Playing) {
+            content15VideoRef.current.pause();
+            setIsContent15Playing(false);
+          } else {
+            await content15VideoRef.current.play();
+            setIsContent15Playing(true);
+          }
+        } catch (error) {
+          console.error('内容15视频切换播放状态失败:', error);
+        }
+      }
+    }
+  };
+
+  const handleContent15Close = () => {
+    if (content15VideoRef.current) {
+      content15VideoRef.current.pause();
+      content15VideoRef.current.currentTime = 0;
+    }
+    setIsContent15Playing(false);
+    setIsContent15Expanded(false);
+  };
+
+  const handleContent15VideoEnd = () => {
+    setIsContent15Playing(false);
+  };
+
+  // 内容16视频控制函数
+  const handleContent16TogglePlay = async () => {
+    console.log('内容16视频控制被触发', { isContent16Expanded, isContent16Playing });
+    
+    if (!isContent16Expanded) {
+      setIsContent16Expanded(true);
+      
+      // 等待动画完成后再播放
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      requestAnimationFrame(() => {
+        if (content16VideoRef.current) {
+          content16VideoRef.current.play()
+            .then(() => {
+              console.log('内容16视频开始播放');
+              setIsContent16Playing(true);
+            })
+            .catch(error => {
+              console.error('内容16视频播放失败:', error);
+              setIsContent16Playing(false);
+            });
+        }
+      });
+    } else {
+      // 已展开状态，切换播放/暂停
+      if (content16VideoRef.current) {
+        try {
+          if (isContent16Playing) {
+            content16VideoRef.current.pause();
+            setIsContent16Playing(false);
+          } else {
+            await content16VideoRef.current.play();
+            setIsContent16Playing(true);
+          }
+        } catch (error) {
+          console.error('内容16视频切换播放状态失败:', error);
+        }
+      }
+    }
+  };
+
+  const handleContent16Close = () => {
+    if (content16VideoRef.current) {
+      content16VideoRef.current.pause();
+      content16VideoRef.current.currentTime = 0;
+    }
+    setIsContent16Playing(false);
+    setIsContent16Expanded(false);
+  };
+
+  const handleContent16VideoEnd = () => {
+    setIsContent16Playing(false);
+  };
+
+  // 内容17视频控制函数
+  const handleContent17TogglePlay = async () => {
+    console.log('内容17视频控制被触发', { isContent17Expanded, isContent17Playing });
+    
+    if (!isContent17Expanded) {
+      setIsContent17Expanded(true);
+      
+      // 等待动画完成后再播放
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      requestAnimationFrame(() => {
+        if (content17VideoRef.current) {
+          content17VideoRef.current.play()
+            .then(() => {
+              console.log('内容17视频开始播放');
+              setIsContent17Playing(true);
+            })
+            .catch(error => {
+              console.error('内容17视频播放失败:', error);
+              setIsContent17Playing(false);
+            });
+        }
+      });
+    } else {
+      // 已展开状态，切换播放/暂停
+      if (content17VideoRef.current) {
+        try {
+          if (isContent17Playing) {
+            content17VideoRef.current.pause();
+            setIsContent17Playing(false);
+          } else {
+            await content17VideoRef.current.play();
+            setIsContent17Playing(true);
+          }
+        } catch (error) {
+          console.error('内容17视频切换播放状态失败:', error);
+        }
+      }
+    }
+  };
+
+  const handleContent17Close = () => {
+    if (content17VideoRef.current) {
+      content17VideoRef.current.pause();
+      content17VideoRef.current.currentTime = 0;
+    }
+    setIsContent17Playing(false);
+    setIsContent17Expanded(false);
+  };
+
+  const handleContent17VideoEnd = () => {
+    setIsContent17Playing(false);
+  };
 
   // 平滑滚动到指定章节
   const scrollToSection = (sectionId: string) => {
@@ -708,6 +881,568 @@ const SafetyPage: React.FC = () => {
       </motion.section>
       </div>
     </motion.main>
+    
+    {/* 内容15视频播放器 - 500px位置 */}
+    <div className="absolute top-[500px] right-[150px] z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        >
+            <div className="flex justify-center">
+              <AnimatePresence>
+                {!isContent15Expanded ? (
+                  // 内容15圆形播放按钮
+                  <motion.div
+                    className="relative"
+                  >
+                    <motion.div
+                      className="w-24 h-24 rounded-full cursor-pointer relative overflow-hidden shadow-xl group"
+                      onClick={handleContent15TogglePlay}
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: [0, -5, 5, 0],
+                        transition: { 
+                          scale: { type: "spring", stiffness: 300, damping: 20 },
+                          rotate: { duration: 0.6, ease: "easeInOut" }
+                        }
+                      }}
+                      whileTap={{ 
+                        scale: 0.8,
+                        rotate: 0,
+                        transition: { 
+                          type: "spring", 
+                          stiffness: 600, 
+                          damping: 15,
+                          duration: 0.1
+                        }
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 20px rgba(59, 130, 246, 0.5)",
+                          "0 0 30px rgba(139, 92, 246, 0.7)",
+                          "0 0 20px rgba(59, 130, 246, 0.5)"
+                        ]
+                      }}
+                      transition={{
+                        boxShadow: {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }
+                      }}
+                      style={{
+                        backgroundImage: `url("${getImagePath('/test-image.jpg')}")`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundColor: '#1a1a2e',
+                        transformOrigin: 'center center'
+                      }}
+                    >
+                      {/* 渐变背景层 */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 opacity-80 rounded-full"></div>
+                      
+                      {/* 播放按钮覆盖层 */}
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/30 transition-all duration-300 rounded-full">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <PlayCircle className="w-8 h-8 text-white drop-shadow-lg" />
+                        </motion.div>
+                      </div>
+                      
+                      {/* 呼吸光环效果 */}
+                      <motion.div
+                        className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-30 pointer-events-none"
+                        animate={{
+                          scale: [1, 1.05, 1],
+                          opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                ) : (
+                  // 展开的内容15视频播放器
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.8, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="relative"
+                  >
+                    {/* 占位元素 - 保持布局稳定 */}
+                    <div className="w-24 h-24 opacity-0"></div>
+
+                    {/* 长方形视频容器 - 绝对定位覆盖按钮位置 */}
+                    <div 
+                      className="absolute w-64 h-36 rounded-xl overflow-hidden shadow-xl"
+                      style={{ 
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                    >
+                      {/* 视频播放器 */}
+                      <video
+                        ref={content15VideoRef}
+                        className="w-full h-full object-cover"
+                        onEnded={handleContent15VideoEnd}
+                        onPause={() => setIsContent15Playing(false)}
+                        onPlay={() => setIsContent15Playing(true)}
+                        muted
+                        controls
+                        controlsList="nodownload noplaybackrate"
+                        playsInline
+                        preload="auto"
+                        onError={(e) => {
+                          console.error('内容15视频加载失败:', (e.target as HTMLVideoElement).currentSrc);
+                        }}
+                        onLoadedMetadata={(e) => {
+                          const v = e.currentTarget;
+                          console.log('内容15视频元数据已加载, 时长:', v.duration);
+                        }}
+                        onCanPlay={() => {
+                          console.log('内容15视频可播放');
+                        }}
+                      style={{ 
+                        background: 'transparent',
+                        transform: 'scale(0.9)',
+                        transformOrigin: 'center center'
+                      }}
+                      >
+                        <source src={getVideoPath(`videos/内容15.mp4`)} type="video/mp4" />
+                        您的浏览器不支持视频播放。
+                      </video>
+                    </div>
+
+                    {/* 控制按钮 - 绝对定位在视频下方，播放时隐藏，悬停时显示 */}
+                    <motion.div 
+                      className="absolute flex justify-center space-x-2 mt-12"
+                      style={{
+                        left: '50%',
+                        top: '100%',
+                        transform: 'translateX(-50%)'
+                      }}
+                      initial={{ opacity: 1 }}
+                      animate={{ 
+                        opacity: isContent15Playing ? 0 : 1,
+                        y: isContent15Playing ? 5 : 0
+                      }}
+                      transition={{ 
+                        duration: 0.2, 
+                        ease: "easeOut"
+                      }}
+                      whileHover={isContent15Playing ? { 
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.2 }
+                      } : {}}
+                    >
+                      <button
+                        onClick={handleContent15TogglePlay}
+                        className="w-8 h-8 bg-blue-600/90 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg transform hover:scale-105 active:scale-95"
+                      >
+                        {isContent15Playing ? (
+                          <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        ) : (
+                          <PlayCircle className="w-4 h-4" />
+                        )}
+                      </button>
+                      <button
+                        onClick={handleContent15Close}
+                        className="w-8 h-8 bg-red-600/90 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg transform hover:scale-105 active:scale-95"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+        </motion.div>
+    </div>
+    
+    {/* 内容16视频播放器 - 1200px位置 */}
+    <div className="absolute top-[1600px] right-[150px] z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        >
+            <div className="flex justify-center">
+              <AnimatePresence>
+                {!isContent16Expanded ? (
+                  // 内容16圆形播放按钮
+                  <motion.div
+                    className="relative"
+                  >
+                    <motion.div
+                      className="w-24 h-24 rounded-full cursor-pointer relative overflow-hidden shadow-xl group"
+                      onClick={handleContent16TogglePlay}
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: [0, -5, 5, 0],
+                        transition: { 
+                          scale: { type: "spring", stiffness: 300, damping: 20 },
+                          rotate: { duration: 0.6, ease: "easeInOut" }
+                        }
+                      }}
+                      whileTap={{ 
+                        scale: 0.8,
+                        rotate: 0,
+                        transition: { 
+                          type: "spring", 
+                          stiffness: 600, 
+                          damping: 15,
+                          duration: 0.1
+                        }
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 20px rgba(59, 130, 246, 0.5)",
+                          "0 0 30px rgba(139, 92, 246, 0.7)",
+                          "0 0 20px rgba(59, 130, 246, 0.5)"
+                        ]
+                      }}
+                      transition={{
+                        boxShadow: {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }
+                      }}
+                      style={{
+                        backgroundImage: `url("${getImagePath('/test-image.jpg')}")`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundColor: '#1a1a2e',
+                        transformOrigin: 'center center'
+                      }}
+                    >
+                      {/* 渐变背景层 */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 opacity-80 rounded-full"></div>
+                      
+                      {/* 播放按钮覆盖层 */}
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/30 transition-all duration-300 rounded-full">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <PlayCircle className="w-8 h-8 text-white drop-shadow-lg" />
+                        </motion.div>
+                      </div>
+                      
+                      {/* 呼吸光环效果 */}
+                      <motion.div
+                        className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-30 pointer-events-none"
+                        animate={{
+                          scale: [1, 1.05, 1],
+                          opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                ) : (
+                  // 展开的内容16视频播放器
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.8, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="relative"
+                  >
+                    {/* 占位元素 - 保持布局稳定 */}
+                    <div className="w-24 h-24 opacity-0"></div>
+
+                    {/* 长方形视频容器 - 绝对定位覆盖按钮位置 */}
+                    <div 
+                      className="absolute w-64 h-36 rounded-xl overflow-hidden shadow-xl"
+                      style={{ 
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                    >
+                      {/* 视频播放器 */}
+                      <video
+                        ref={content16VideoRef}
+                        className="w-full h-full object-cover"
+                        onEnded={handleContent16VideoEnd}
+                        onPause={() => setIsContent16Playing(false)}
+                        onPlay={() => setIsContent16Playing(true)}
+                        muted
+                        controls
+                        controlsList="nodownload noplaybackrate"
+                        playsInline
+                        preload="auto"
+                        onError={(e) => {
+                          console.error('内容16视频加载失败:', (e.target as HTMLVideoElement).currentSrc);
+                        }}
+                        onLoadedMetadata={(e) => {
+                          const v = e.currentTarget;
+                          console.log('内容16视频元数据已加载, 时长:', v.duration);
+                        }}
+                        onCanPlay={() => {
+                          console.log('内容16视频可播放');
+                        }}
+                      style={{ 
+                        background: 'transparent',
+                        transform: 'scale(0.9)',
+                        transformOrigin: 'center center'
+                      }}
+                      >
+                        <source src={getVideoPath(`videos/内容16.mp4`)} type="video/mp4" />
+                        您的浏览器不支持视频播放。
+                      </video>
+                    </div>
+
+                    {/* 控制按钮 - 绝对定位在视频下方，播放时隐藏，悬停时显示 */}
+                    <motion.div 
+                      className="absolute flex justify-center space-x-2 mt-12"
+                      style={{
+                        left: '50%',
+                        top: '100%',
+                        transform: 'translateX(-50%)'
+                      }}
+                      initial={{ opacity: 1 }}
+                      animate={{ 
+                        opacity: isContent16Playing ? 0 : 1,
+                        y: isContent16Playing ? 5 : 0
+                      }}
+                      transition={{ 
+                        duration: 0.2, 
+                        ease: "easeOut"
+                      }}
+                      whileHover={isContent16Playing ? { 
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.2 }
+                      } : {}}
+                    >
+                      <button
+                        onClick={handleContent16TogglePlay}
+                        className="w-8 h-8 bg-blue-600/90 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg transform hover:scale-105 active:scale-95"
+                      >
+                        {isContent16Playing ? (
+                          <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        ) : (
+                          <PlayCircle className="w-4 h-4" />
+                        )}
+                      </button>
+                      <button
+                        onClick={handleContent16Close}
+                        className="w-8 h-8 bg-red-600/90 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg transform hover:scale-105 active:scale-95"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+        </motion.div>
+    </div>
+    
+    {/* 内容17视频播放器 - 3000px位置 */}
+    <div className="absolute top-[3800px] right-[150px] z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        >
+            <div className="flex justify-center">
+              <AnimatePresence>
+                {!isContent17Expanded ? (
+                  // 内容17圆形播放按钮
+                  <motion.div
+                    className="relative"
+                  >
+                    <motion.div
+                      className="w-24 h-24 rounded-full cursor-pointer relative overflow-hidden shadow-xl group"
+                      onClick={handleContent17TogglePlay}
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: [0, -5, 5, 0],
+                        transition: { 
+                          scale: { type: "spring", stiffness: 300, damping: 20 },
+                          rotate: { duration: 0.6, ease: "easeInOut" }
+                        }
+                      }}
+                      whileTap={{ 
+                        scale: 0.8,
+                        rotate: 0,
+                        transition: { 
+                          type: "spring", 
+                          stiffness: 600, 
+                          damping: 15,
+                          duration: 0.1
+                        }
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 20px rgba(59, 130, 246, 0.5)",
+                          "0 0 30px rgba(139, 92, 246, 0.7)",
+                          "0 0 20px rgba(59, 130, 246, 0.5)"
+                        ]
+                      }}
+                      transition={{
+                        boxShadow: {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }
+                      }}
+                      style={{
+                        backgroundImage: `url("${getImagePath('/test-image.jpg')}")`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundColor: '#1a1a2e',
+                        transformOrigin: 'center center'
+                      }}
+                    >
+                      {/* 渐变背景层 */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 opacity-80 rounded-full"></div>
+                      
+                      {/* 播放按钮覆盖层 */}
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/30 transition-all duration-300 rounded-full">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <PlayCircle className="w-8 h-8 text-white drop-shadow-lg" />
+                        </motion.div>
+                      </div>
+                      
+                      {/* 呼吸光环效果 */}
+                      <motion.div
+                        className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-30 pointer-events-none"
+                        animate={{
+                          scale: [1, 1.05, 1],
+                          opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                ) : (
+                  // 展开的内容17视频播放器
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.8, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="relative"
+                  >
+                    {/* 占位元素 - 保持布局稳定 */}
+                    <div className="w-24 h-24 opacity-0"></div>
+
+                    {/* 长方形视频容器 - 绝对定位覆盖按钮位置 */}
+                    <div 
+                      className="absolute w-64 h-36 rounded-xl overflow-hidden shadow-xl"
+                      style={{ 
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                    >
+                      {/* 视频播放器 */}
+                      <video
+                        ref={content17VideoRef}
+                        className="w-full h-full object-cover"
+                        onEnded={handleContent17VideoEnd}
+                        onPause={() => setIsContent17Playing(false)}
+                        onPlay={() => setIsContent17Playing(true)}
+                        muted
+                        controls
+                        controlsList="nodownload noplaybackrate"
+                        playsInline
+                        preload="auto"
+                        onError={(e) => {
+                          console.error('内容17视频加载失败:', (e.target as HTMLVideoElement).currentSrc);
+                        }}
+                        onLoadedMetadata={(e) => {
+                          const v = e.currentTarget;
+                          console.log('内容17视频元数据已加载, 时长:', v.duration);
+                        }}
+                        onCanPlay={() => {
+                          console.log('内容17视频可播放');
+                        }}
+                      style={{ 
+                        background: 'transparent',
+                        transform: 'scale(0.9)',
+                        transformOrigin: 'center center'
+                      }}
+                      >
+                        <source src={getVideoPath(`videos/内容17.mp4`)} type="video/mp4" />
+                        您的浏览器不支持视频播放。
+                      </video>
+                    </div>
+
+                    {/* 控制按钮 - 绝对定位在视频下方，播放时隐藏，悬停时显示 */}
+                    <motion.div 
+                      className="absolute flex justify-center space-x-2 mt-12"
+                      style={{
+                        left: '50%',
+                        top: '100%',
+                        transform: 'translateX(-50%)'
+                      }}
+                      initial={{ opacity: 1 }}
+                      animate={{ 
+                        opacity: isContent17Playing ? 0 : 1,
+                        y: isContent17Playing ? 5 : 0
+                      }}
+                      transition={{ 
+                        duration: 0.2, 
+                        ease: "easeOut"
+                      }}
+                      whileHover={isContent17Playing ? { 
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.2 }
+                      } : {}}
+                    >
+                      <button
+                        onClick={handleContent17TogglePlay}
+                        className="w-8 h-8 bg-blue-600/90 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg transform hover:scale-105 active:scale-95"
+                      >
+                        {isContent17Playing ? (
+                          <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        ) : (
+                          <PlayCircle className="w-4 h-4" />
+                        )}
+                      </button>
+                      <button
+                        onClick={handleContent17Close}
+                        className="w-8 h-8 bg-red-600/90 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg transform hover:scale-105 active:scale-95"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+        </motion.div>
+    </div>
+    
   </div>
   </>
   );
