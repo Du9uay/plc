@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
@@ -16,7 +16,7 @@ import HomeworkPage from './pages/HomeworkPage';
 
 const App: React.FC = () => {
   return (
-    <Router basename="/plc">
+    <Router>
       <ScrollToTop />
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white">
         <Navigation />
