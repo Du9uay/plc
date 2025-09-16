@@ -22,6 +22,7 @@ const App: React.FC = () => {
         <Navigation />
         <div className="container mx-auto px-4 pt-20">
           <Routes>
+            <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/objectives" element={<ObjectivesPage />} />
             <Route path="/careers" element={<CareersPage />} />
