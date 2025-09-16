@@ -16,7 +16,7 @@ import HomeworkPage from './pages/HomeworkPage';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/plc">
       <ScrollToTop />
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white">
         <Navigation />
